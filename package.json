@@ -1,0 +1,71 @@
+{
+  "name": "dev-journal",
+  "private": true,
+  "version": "0.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "node scripts/dev-runner.cjs",
+    "build": "vite build",
+    "dist": "npm run build && electron-builder --linux AppImage",
+    "dist:win": "npm run build && electron-builder --win nsis portable",
+    "start": "electron .",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.efren.devjournal",
+    "productName": "Dev Journal",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.8.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@electron/rebuild": "^3.7.2",
+    "@eslint/js": "^9.39.4",
+    "@rolldown/plugin-babel": "^0.2.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "concurrently": "^9.2.1",
+    "electron": "^41.0.3",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.1",
+    "wait-on": "^9.0.4"
+  }
+}
